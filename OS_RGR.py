@@ -22,13 +22,20 @@ while (True):
         writer-=1
         data[temp]=1
         temp+=1
-    temp+=reader_start
+    #temp+=reader_start
+    tmp_bool = True
     while reader!=0:
-        while data[reader_start]!=0:
-            sheet.cell(row=3, column=reader_start+2).fill=PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
-            reader_start+=1
-        sheet.cell(row=3, column=reader_start+2).fill=PatternFill(start_color='008000', end_color='008000', fill_type='solid')  
-        sheet.cell(row=2, column=reader_start+2).fill=PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
+        if tmp_bool:
+            while True:
+                if data[reader_start-1]==1:
+                    sheet.cell(row=3, column=reader_start+1).fill=PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
+                    reader_start+=1
+                else:
+                    tmp_bool = False
+                    break
+
+        sheet.cell(row=3, column=temp+2).fill=PatternFill(start_color='008000', end_color='008000', fill_type='solid')  
+        sheet.cell(row=2, column=temp+2).fill=PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
         reader-=1
         data[temp]=1
         temp+=1
