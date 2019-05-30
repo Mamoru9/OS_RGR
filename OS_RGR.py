@@ -1,11 +1,12 @@
-import xlrd, openpyxl
-from openpyxl.styles import PatternFill
-from array import *
+import xlrd, openpyxl #модули для работы с excel
+from openpyxl.styles import PatternFill 
+from array import * #модуль для массивов 
 
 
-wb = openpyxl.load_workbook(filename = 'text.xlsx')
-sheet = wb['Лист1']
+wb = openpyxl.load_workbook(filename = 'text.xlsx') #Открываем файл
+sheet = wb['Лист1'] #открываем лист
 
+#массив для отслеживания закрашинных ячеек
 data = array('i',[])
 for i in range(500):
     data.insert(i, 0)
@@ -13,6 +14,7 @@ for i in range(500):
 temp = 0
 flag = True
 
+#Вводим кванты читателей и писателей затем по порядку закрашиваем ячейки, после каждой прорисовки сохраняем файл
 while (True):
     print("Чтобы выйти нажмите ctrl+c") 
     writer = int(input("Введите кол-во квантов записи: "))
